@@ -63,7 +63,7 @@ public:
 			rehash();
 		return true;
 	}
-	/*bool insert(const std::pair<Key, HashedObj>&& x) {
+	bool insert(const std::pair<Key, HashedObj>&& x) {
 		int currentPos = findPos(x.first);
 		if (isActive(currentPos))
 			return false;
@@ -73,7 +73,7 @@ public:
 		if (++currentSize > array.size() / 2)
 			rehash();
 		return true;
-	}*/
+	}
 	bool remove(const Key & x) {
 		int currentPos = findPos(x);
 		if (!isActive(currentPos))
