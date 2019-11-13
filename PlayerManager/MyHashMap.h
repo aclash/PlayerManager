@@ -2,14 +2,11 @@
 #include "MyVector.h"
 
 //check prime
-bool IsPrime(unsigned long long num)
-{
-	if (num <= 3) {
+bool IsPrime(unsigned long long num){
+	if (num <= 3) 
 		return num > 1;
-	}
-	else if (num % 2 == 0 || num % 3 == 0) {
+	else if (num % 2 == 0 || num % 3 == 0) 
 		return false;
-	}
 	else {
 		for (int i = 5; i * i <= num; i += 6) {
 			if (num % i == 0 || num % (i + 2) == 0) {
@@ -21,8 +18,7 @@ bool IsPrime(unsigned long long num)
 }
 
 //next Prim
-unsigned long long nextPrime(unsigned long long num)
-{
+unsigned long long nextPrime(unsigned long long num){
 	if (num % 2 == 0)
 		num++;
 	for (unsigned long long i = num; num += 2;)
@@ -32,10 +28,9 @@ unsigned long long nextPrime(unsigned long long num)
 }
 
 template <typename Key, typename HashedObj>
-class MyHashMap
-{
+class MyHashMap{
 public:
-	explicit MyHashMap(int size = 101) : array(nextPrime(size)) { makeEmpty(); }
+	explicit MyHashMap(int size = 7) : array(nextPrime(size)) { makeEmpty(); }
 	~MyHashMap(){
 	}
 	void makeEmpty() {
@@ -49,7 +44,6 @@ public:
 	bool contains(const Key & x) const { return isActive(findPos(x)); }
 	HashedObj& find(const Key& x) {
 		int pos = findPos(x);
-		auto pp = array[pos].element;
 		if (isActive(pos))
 			return array[pos].element.second;
 	}
@@ -69,7 +63,6 @@ public:
 			return false;
 		array[currentPos].element = x;
 		array[currentPos].info = ACTIVE;
-		auto pp = array[currentPos].element;
 		if (++currentSize > array.size() / 2)
 			rehash();
 		return true;
@@ -83,8 +76,7 @@ public:
 	}
 	enum EntryType { ACTIVE, EMPTY, DELETED };
 private:
-	struct HashEntry
-	{
+	struct HashEntry{
 		std::pair<Key, HashedObj> element;
 		EntryType info;
 		HashEntry(const std::pair<Key, HashedObj> & e = {}, EntryType i = EMPTY)

@@ -1,14 +1,12 @@
 template <typename T>
-class MyVector
-{
+class MyVector{
 private:
 	int theSize;
 	int capacitytheSize;
 	T* object;
 public:
 	static const int SPARE_CAPACITY = 16;
-	explicit MyVector(int inittheSize = 0) :theSize{ inittheSize }, capacitytheSize{ inittheSize + SPARE_CAPACITY }
-	{
+	explicit MyVector(int inittheSize = 0) :theSize{ inittheSize }, capacitytheSize{ inittheSize + SPARE_CAPACITY }{
 		object = new T[capacitytheSize];
 	}
 	MyVector(const MyVector& rhs) :theSize{ rhs.theSize }, capacitytheSize{ rhs.capacitytheSize }, object{ nullptr } //deep copy
