@@ -30,7 +30,7 @@ unsigned long long nextPrime(unsigned long long num){
 template <typename Key, typename HashedObj>
 class MyHashMap{
 public:
-	explicit MyHashMap(int size = 7) : array(nextPrime(size)) { makeEmpty(); }
+	explicit MyHashMap(int size = 101) : array(nextPrime(size)) { makeEmpty(); }
 	~MyHashMap(){
 	}
 	void makeEmpty() {
